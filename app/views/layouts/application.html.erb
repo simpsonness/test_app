@@ -9,16 +9,19 @@
 <body>
 	<div class="container">
 		<ul class="nav nav-tabs">
-	<li class="active"><a href="#">Home</a></li>
+	
 	<li><%= link_to "Blog", root_path %></li>
 	<li><%= link_to "product" %></li>
-	<% if current_user %>
-        Logged in as <%= current_user.email %>.
-        <li><%= link_to "Log out", logout_path %></li>
+
+  <div class="pull-right user-info">
+	  <% if current_user %>
+        hello <%= current_user.username %>!
+        <%= link_to "Log out", logout_path %>
       <% else %>
-        <li><%= link_to "Sign up", signup_path %></li> 
-        <li><%= link_to "Log in", login_path  %><li>
-      <% end %>
+        <%= link_to "Sign up", signup_path %> 
+        <%= link_to "Log in", login_path  %>
+    <% end %>
+  </div>
 </ul>
      <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
